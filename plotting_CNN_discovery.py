@@ -7,7 +7,7 @@ from scipy.interpolate import griddata
 from torch.nn.utils import parameters_to_vector, vector_to_parameters
 import os
 
-from NavierStokespytorch import PhysicsInformedCNN, pinn_loss
+from CNN_discovery import PhysicsInformedCNN, pinn_loss
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -99,7 +99,7 @@ def generate_landscape_plot(
 
 
 def plot_pressure_field(
-    model_path, data, snap_idx=100, output_name="pressure_comparison.png"
+    model_path, data, snap_idx=100, output_name="pressure_comparison_CNN_discovery.png"
 ):
     print(f"\n--- Generating the pressure plot ({output_name}) ---")
 
@@ -257,5 +257,5 @@ if __name__ == "__main__":
         model_path="navier_adam_lbfgs_model.pth",
         data=data,
         snap_idx=100,
-        output_name="pressure_comparison_adam_lbfgs.png",
+        output_name="pressure_comparison_adam_lbfgs_CNN_discovery.png",
     )

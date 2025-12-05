@@ -121,7 +121,7 @@ def run_training_session(mode_name, xyt, u_true, v_true, steps=2000, use_lbfgs=F
         optimizer.step()
 
         if it % 50 == 0:
-            current_w = parameters_to_vector(model.parameters()).detach().cpu()
+            current_w = parameters_to_vector(model.parameters()).detach().cpu()#si on enlève cpu alors se sera sur gpu
             weight_history.append(current_w)
             if it % 500 == 0:
                 print(f"Iter {it}, Loss: {loss.item():.3e}")
