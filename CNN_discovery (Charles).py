@@ -34,8 +34,8 @@ class PhysicsInformedDiscovery(nn.Module):
 
         self.apply(self.init_weights)
 
-        # --- The Physics Parameters to Discover ---
-        # Initialize to 0.0. The network will learn the correct values.
+        # --- Physics Parameters to Discover ---
+        # Initialize to 0.0
         self.lambda1 = nn.Parameter(torch.tensor([0.0], dtype=torch.float32))
         self.lambda2 = nn.Parameter(torch.tensor([0.0], dtype=torch.float32))
 
@@ -135,7 +135,6 @@ def run_discovery_training(xyt_train, u_train, v_train, steps=5000):
                 f"L1: {l1_val:.4f} | L2: {l2_val:.5f}"
             )
 
-    # Add final values
     iter_history.append(steps)
     l1_history.append(model.lambda1.item())
     l2_history.append(model.lambda2.item())
@@ -171,7 +170,7 @@ def run_discovery_training(xyt_train, u_train, v_train, steps=5000):
     )
     plt.axhline(
         y=0.01, color="r", linestyle="--", label="True Value (0.01)"
-    )  # Assuming Re=100
+    )
     plt.xlabel("Iterations")
     plt.ylabel("Value of lambda_2")
     plt.title("Discovery of lambda_2 (Viscosity)")
@@ -224,7 +223,7 @@ if __name__ == "__main__":
     v = VV.flatten()[:, None]
 
     # Training Data Selection
-    N_train = 10000
+    N_train = 5000
     idx = np.random.choice(N * T, N_train, replace=False)
 
     x_train = torch.tensor(x[idx, :], dtype=torch.float32)

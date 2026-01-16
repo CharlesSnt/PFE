@@ -207,19 +207,19 @@ if __name__ == "__main__":
 
     # --- Different trainings ---
 
-    # 1. Adam + LBFGS (Original one)
+    # Adam + LBFGS (Original one)
     run_training_session(
-        "adam", xyt_train, u_train, v_train, steps=1000, use_lbfgs=True
+        "adam", xyt_train, u_train, v_train, steps=20000, use_lbfgs=True
     )
 
-    # 2. Adam seul (Without LBFGS)
-    run_training_session(
-        "adam_only", xyt_train, u_train, v_train, steps=2000, use_lbfgs=False
-    )
+    # # Adam seul (Without LBFGS)
+    # run_training_session(
+    #     "adam_only", xyt_train, u_train, v_train, steps=2000, use_lbfgs=False
+    # )
 
-    # 3. Gradient Descent (SGD)
-    run_training_session(
-        "sgd", xyt_train, u_train, v_train, steps=2000, use_lbfgs=False
-    )
+    # # Gradient Descent (SGD)
+    # run_training_session(
+    #     "sgd", xyt_train, u_train, v_train, steps=2000, use_lbfgs=False
+    # )
 
     print("\nTraining finished !")
